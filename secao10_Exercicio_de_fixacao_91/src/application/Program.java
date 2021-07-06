@@ -2,7 +2,7 @@ package application;
 
 import java.util.Scanner;
 
-import entities.Student;
+import entities.Rent;
 
 public class Program {
 
@@ -10,25 +10,28 @@ public class Program {
 
 		Scanner sc = new Scanner(System.in);
 
-		Student[] rooms = new Student[10];
+		Rent[] rooms = new Rent[10];
 
 		System.out.print("How many rooms will be rented? ");
 		int n = sc.nextInt();
 
-		for (int i = 0; i < n; i++) {
+		for (int i = 1; i <= n; i++) {
+			System.out.println("\nRent #" + i + ":");
+			System.out.print("Name: ");
 			sc.nextLine();
-			System.out.printf("RENT #%d\n", i + 1);
 			String name = sc.nextLine();
+			System.out.print("Email: ");
 			String email = sc.nextLine();
+			System.out.print("Room: ");
 			int room = sc.nextInt();
-			rooms[room] = new Student(name, email);
+			rooms[room] = new Rent(name, email);
 		}
-		
-		System.out.println("Busy rooms:");
-		
-		for (int i = 0; i < rooms.length ; i++) {
+
+		System.out.println("\nBusy rooms:");
+
+		for (int i = 0; i < rooms.length; i++) {
 			if (rooms[i] != null) {
-				System.out.println(i + ": " +  rooms[i].getName() + ", " + rooms[i].getEmail());
+				System.out.println(i + ": " + rooms[i].toString());
 			}
 		}
 

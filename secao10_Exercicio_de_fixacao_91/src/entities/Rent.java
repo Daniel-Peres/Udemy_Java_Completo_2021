@@ -1,11 +1,11 @@
 package entities;
 
-public class Student {
-	
+public class Rent {
+
 	private String name;
 	private String email;
-	
-	public Student(String name, String email) {
+
+	public Rent(String name, String email) {
 		this.name = name;
 		this.email = email;
 	}
@@ -25,7 +25,10 @@ public class Student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return name + ", " + email;
+	}
 
 }
