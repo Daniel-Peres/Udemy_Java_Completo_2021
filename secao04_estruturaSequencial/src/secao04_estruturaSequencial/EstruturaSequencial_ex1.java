@@ -11,7 +11,7 @@ public class EstruturaSequencial_ex1 {
 
 		//Entrada: 10 e 30   Saída: SOMA = 40
 		
-		int n1, n2, soma;
+		int n1, n2;
 		
 		Scanner sc = new Scanner(System.in);
 		

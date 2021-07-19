@@ -30,6 +30,9 @@ public class EstruturaSequencial_ex5 {
 		
 		valorTotal = numPecas1 * valorUnitario1 + numPecas2 * valorUnitario2;
 		
+
+		System.out.printf("Codigo peça 1: %d , quantidade: %d , Subtotal: %.2f\n", cod1, numPecas1, numPecas1 * valorUnitario1);
+		System.out.printf("Codigo peça 2: %d , quantidade: %d , Subtotal: %.2f\n", cod2, numPecas2, numPecas2 * valorUnitario2);
 		System.out.printf("VALOR A PAGAR: R$ %.2f", valorTotal);
 		
 	}
