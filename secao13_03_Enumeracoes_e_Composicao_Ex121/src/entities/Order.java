@@ -15,7 +15,7 @@ public class Order {
 
 	private Client client;
 
-	private List<OrderItem> orderItens = new ArrayList<>();
+	private List<OrderItem> items = new ArrayList<>();
 
 	public Order() {
 	}
@@ -47,21 +47,21 @@ public class Order {
 	}
 
 	public List<OrderItem> getItens() {
-		return orderItens;
+		return items;
 	}
 
 	public void addItem(OrderItem item) {
-		orderItens.add(item);
+		items.add(item);
 	}
 
 	public void removeItem(OrderItem item) {
-		orderItens.remove(item);
+		items.remove(item);
 	}
 
 	public Double total() {
 		double soma = 0.0;
-		for (OrderItem o : orderItens) {
-			soma += o.subTotal();
+		for (OrderItem item : items) {
+			soma += item.subTotal();
 		}
 
 		return soma;
@@ -74,11 +74,11 @@ public class Order {
 		sb.append("ORDER SUMMARY:\n");
 		sb.append("Order moment: " + sdf.format(moment) + "\n");
 		sb.append("Order status: " + getStatus() + "\n");
-		sb.append("Client: " + client.toString() + "\n");
+		sb.append("Client: " + client + "\n");
 		sb.append("Order items:\n");
 
-		for (OrderItem o : orderItens) {
-			sb.append(o.toString() + "\n");
+		for (OrderItem item : items) {
+			sb.append(item + "\n");
 		}
 
 		sb.append("Total price: $" + String.format("%.2f", total()));

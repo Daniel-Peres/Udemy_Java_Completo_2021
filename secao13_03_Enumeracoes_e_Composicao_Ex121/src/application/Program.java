@@ -55,7 +55,7 @@ public class Program {
 			order.addItem(o);
 		}
 		
-		System.out.println(order.toString());
+		System.out.println(order);
 
 		sc.close();
 
