@@ -61,7 +61,7 @@ public class Order {
 	public Double total() {
 		double soma = 0.0;
 		for (OrderItem o : orderItens) {
-			soma += o.subTotal(o.getQuantity(), o.getPrice());
+			soma += o.subTotal();
 		}
 
 		return soma;

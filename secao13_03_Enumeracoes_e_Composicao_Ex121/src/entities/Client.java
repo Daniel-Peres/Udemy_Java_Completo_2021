@@ -4,13 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Client {
-	
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	
+
+	public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
 	private String name;
 	private String email;
 	private Date birthDate;
-	
+
 	public Client() {
 	}
 
@@ -46,9 +46,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return getName() + " (" + sdf.format(getBirthDate()) +") - " + getEmail();
+		return name + " (" + sdf.format(birthDate) + ") - " + email;
 	}
-	
-	
 
 }
