@@ -44,9 +44,15 @@ public class Program {
 
 		System.out.println();
 		System.out.println("IMPOSTOS PAGOS:");
+		double totalImpostos = 0.0;
 		for (Contribuinte contribuinte : contribuintes) {
 			System.out.println(contribuinte.getNome() + ": $ " + String.format("%.2f", contribuinte.calculoImposto()));
+			totalImpostos += contribuinte.calculoImposto();
 		}
+
+		System.out.println();
+		System.out.printf("TOTAL DE IMPOSTOS: $ %.2f", totalImpostos);
+
 		sc.close();
 	}
 
