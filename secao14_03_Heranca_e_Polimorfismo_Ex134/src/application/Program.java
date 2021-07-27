@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-import entities.Pessoa;
+import entities.Contribuinte;
 import entities.PessoaFisica;
 import entities.PessoaJuridica;
 
@@ -19,7 +19,7 @@ public class Program {
 		System.out.print("Entre com o número de contribuintes: ");
 		int n = sc.nextInt();
 
-		List<Pessoa> contribuintes = new ArrayList<>();
+		List<Contribuinte> contribuintes = new ArrayList<>();
 
 		for (int i = 1; i <= n; i++) {
 			System.out.println("Dados do contribuinte #" + i + ":");
@@ -44,7 +44,7 @@ public class Program {
 
 		System.out.println();
 		System.out.println("IMPOSTOS PAGOS:");
-		for (Pessoa contribuinte : contribuintes) {
+		for (Contribuinte contribuinte : contribuintes) {
 			System.out.println(contribuinte.getNome() + ": $ " + String.format("%.2f", contribuinte.calculoImposto()));
 		}
 		sc.close();
