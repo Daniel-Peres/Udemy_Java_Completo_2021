@@ -1,6 +1,9 @@
 package chess;
 
 import boardgame.Board;
+import boardgame.Position;
+import chess.pieces.King;
+import chess.pieces.Rook;
 
 public class ChessMatch {
 
@@ -8,6 +11,7 @@ public class ChessMatch {
 
 	public ChessMatch() { // a classe partida de xadrez instancia um tabuleiro com seu tamanho em seu construtor
 		board = new Board(8, 8);
+		initialSetup();
 	}
 
 	public ChessPiece[][] getPieces() {  // fazendo downCast nas do tipo peça pra peças de xadrez
@@ -19,6 +23,13 @@ public class ChessMatch {
 		}
 
 		return mat; //retornando a matriz de peças agora com o tipo ChessPiece
+	}
+	
+	private void initialSetup() {
+		board.placePiece(new Rook(board, Color.WHITE), new Position(2, 1));
+		board.placePiece(new King(board, Color.BLACK), new Position(0, 4));
+		board.placePiece(new King(board, Color.WHITE), new Position(7, 4));
+		
 	}
 
 }
