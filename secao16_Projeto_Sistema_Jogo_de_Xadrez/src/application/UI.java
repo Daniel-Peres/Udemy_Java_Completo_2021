@@ -8,11 +8,14 @@ public class UI {
 
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " "); // imprime numero lateral esquerdo com espaço
+			
 			for (int j = 0; j < pieces.length; j++) {
 				printPiece(pieces[i][j]); // imprime pecas dispostas no tabuleiro
 			}
+			
 			System.out.println(); // quebra de linha
 		}
+		
 		System.out.println("  a b c d e f g h"); // imprime rodapé do tabuleiro
 
 	}

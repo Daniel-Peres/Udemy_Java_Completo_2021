@@ -2,18 +2,16 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Program {
 
-	@SuppressWarnings("null")
 	public static void main(String[] args) {
 
 		String ano2020 = "c:\\temp\\arquivo2020.txt";
-		String ano2021 = "c:\\temp\\arquivo2021.txt";
+//		String ano2021 = "c:\\temp\\arquivo2021.txt";
 
 		List<String[]> linhas = new ArrayList<>();
 
