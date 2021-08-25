@@ -18,7 +18,7 @@ public class Program {
 		while (true) { // enquanto não há logica programada fica repetindo sempre
 			try {
 				UI.clearScreen();
-				UI.printBoard(chessMatch.getPieces());
+				UI.printMatch(chessMatch);
 
 				System.out.println();
 				System.out.print("Origem: ");
