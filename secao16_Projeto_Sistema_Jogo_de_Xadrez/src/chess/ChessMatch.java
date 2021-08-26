@@ -68,9 +68,9 @@ public class ChessMatch {
 		Piece capturedPiece = board.removePiece(target);// capturando uma possivel peça na posição de destino
 		board.placePiece(p, target);// colocar a peça que estava na origem na posição de destino
 		
-		if (capturedPiece != null) {
-			piecesOnTheBoard.remove(capturedPiece);
-			capturedPieces.add(capturedPiece);
+		if (capturedPiece != null) { // se a peca capturada existir
+			piecesOnTheBoard.remove(capturedPiece); // remove a peca do tabuleiro e
+			capturedPieces.add(capturedPiece); // adiciona a peca em pecas capturadas
 		}
 		
 		return capturedPiece;// retornar a peça capturada
