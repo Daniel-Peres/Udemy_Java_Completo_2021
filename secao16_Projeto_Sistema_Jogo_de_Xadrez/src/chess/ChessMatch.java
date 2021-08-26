@@ -1,5 +1,8 @@
 package chess;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import boardgame.Board;
 import boardgame.Piece;
 import boardgame.Position;
@@ -11,6 +14,9 @@ public class ChessMatch {
 	private int turn;
 	private Color currentPlayer;
 	private Board board;
+
+	private List<Piece> piecesOnTheBoard = new ArrayList<>();
+	private List<Piece> capturedPieces = new ArrayList<>();
 
 	public ChessMatch() {
 		board = new Board(8, 8); // instanciando um tabuleiro
@@ -50,7 +56,7 @@ public class ChessMatch {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
 		validateSourcePosition(source);
-		
+
 		validateTargetPosition(source, target);
 		Piece capturedPiece = makeMove(source, target);
 		nextTurn();
@@ -58,24 +64,26 @@ public class ChessMatch {
 	}
 
 	private Piece makeMove(Position source, Position target) {
-		// removendo a peça na posição de origem
-		Piece p = board.removePiece(source);
-		// capturando uma possivel peça na posição de destino
-		Piece capturedPiece = board.removePiece(target);
-		// colocar a peça que estava na origem na posição de destino
-		board.placePiece(p, target);
-		// retornar a peça capturada
-		return capturedPiece;
+		Piece p = board.removePiece(source);// removendo a peça na posição de origem
+		Piece capturedPiece = board.removePiece(target);// capturando uma possivel peça na posição de destino
+		board.placePiece(p, target);// colocar a peça que estava na origem na posição de destino
+		
+		if (capturedPiece != null) {
+			piecesOnTheBoard.remove(capturedPiece);
+			capturedPieces.add(capturedPiece);
+		}
+		
+		return capturedPiece;// retornar a peça capturada
 	}
 
 	private void validateSourcePosition(Position position) {
 		if (!board.thereIsAPiece(position)) {
 			throw new ChessException("Nao existe peca na posicao de origem");
 		}
-		if(currentPlayer != ((ChessPiece)board.piece(position)).getColor()) {
+		if (currentPlayer != ((ChessPiece) board.piece(position)).getColor()) {
 			throw new ChessException("A peca escolhida nao e sua !!!");
 		}
-		
+
 		if (!board.piece(position).isThereAnyPossibleMove()) {
 			throw new ChessException("Nao existe movimentos possiveis para a peca escolhida");
 		}
@@ -86,7 +94,7 @@ public class ChessMatch {
 			throw new ChessException("A peca escolhida nao pode ser movida para a posicao de destino");
 		}
 	}
-	
+
 	private void nextTurn() {
 		turn++;
 		currentPlayer = currentPlayer == Color.WHITE ? Color.BLACK : Color.WHITE;
@@ -94,6 +102,7 @@ public class ChessMatch {
 
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
 		board.placePiece(piece, new ChessPosition(column, row).toPosition());
+		piecesOnTheBoard.add(piece);
 	}
 
 	private void initialSetup() {
