@@ -60,7 +60,12 @@ public class UI {
 		System.out.println("Jogada: " + chessMatch.getTurn());
 		System.out.println("Aguardando jogador: " + printCurrentPlayer(chessMatch.getCurrentPlayer()));
 		if(chessMatch.getCheck()) {
-			System.out.println("CHECK!");
+			if (chessMatch.getCurrentPlayer() == Color.WHITE) {
+				System.out.println(ANSI_WHITE + " !!! CHECK !!!" + ANSI_RESET);
+			} else {
+				System.out.println(ANSI_YELLOW + " !!! CHECK !!!" + ANSI_RESET);
+			}
+//			System.out.println("CHECK!");
 		}
 
 	}
