@@ -58,19 +58,18 @@ public class UI {
 		printCapturedPieces(captured);
 		System.out.println();
 		System.out.println("Jogada: " + chessMatch.getTurn());
-		
-		if(!chessMatch.getCheckMate()) {
-			System.out.println("Aguardando jogador: " + printCurrentPlayer(chessMatch.getCurrentPlayer()));
-		if(chessMatch.getCheck()) {
-			if (chessMatch.getCurrentPlayer() == Color.WHITE) {
-				System.out.println(ANSI_WHITE + " !!! CHECK !!!" + ANSI_RESET);
-			} else {
-				System.out.println(ANSI_YELLOW + " !!! CHECK !!!" + ANSI_RESET);
-			}
 
-		}
-		}
-		else {
+		if (!chessMatch.getCheckMate()) {
+			System.out.println("Aguardando jogador: " + printCurrentPlayer(chessMatch.getCurrentPlayer()));
+			if (chessMatch.getCheck()) {
+				if (chessMatch.getCurrentPlayer() == Color.WHITE) {
+					System.out.println(ANSI_WHITE + " !!! CHECK !!!" + ANSI_RESET);
+				} else {
+					System.out.println(ANSI_YELLOW + " !!! CHECK !!!" + ANSI_RESET);
+				}
+
+			}
+		} else {
 			System.out.println(" !! CHECKMATE !!");
 			System.out.println(" Vencedor: " + chessMatch.getCurrentPlayer());
 		}
@@ -79,7 +78,7 @@ public class UI {
 	public static void printBoard(ChessPiece[][] pieces) { // imprimir tabuleiro
 
 		for (int i = 0; i < pieces.length; i++) {
-			System.out.print((8 - i) + " "); // imprime numero lateral esquerdo com espaço
+			System.out.print(ANSI_GREEN + (8 - i) + "  " + ANSI_RESET); // imprime numero lateral esquerdo com espaço
 
 			for (int j = 0; j < pieces.length; j++) {
 				printPiece(pieces[i][j], false); // imprime pecas dispostas no tabuleiro
@@ -87,14 +86,14 @@ public class UI {
 
 			System.out.println(); // quebra de linha
 		}
-
-		System.out.println("  a b c d e f g h"); // imprime rodapé do tabuleiro
+		System.out.println();
+		System.out.println(ANSI_GREEN + "   a b c d e f g h" + ANSI_RESET); // imprime rodapé do tabuleiro
 	}
 
 	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) { // imprimir tabuleiro
 
 		for (int i = 0; i < pieces.length; i++) {
-			System.out.print((8 - i) + " "); // imprime numero lateral esquerdo com espaço
+			System.out.print(ANSI_GREEN + (8 - i) + "  " + ANSI_RESET); // imprime numero lateral esquerdo com espaço
 
 			for (int j = 0; j < pieces.length; j++) {
 				printPiece(pieces[i][j], possibleMoves[i][j]); // imprime pecas dispostas no tabuleiro
@@ -103,7 +102,8 @@ public class UI {
 			System.out.println(); // quebra de linha
 		}
 
-		System.out.println("  a b c d e f g h"); // imprime rodapé do tabuleiro
+		System.out.println();
+		System.out.println(ANSI_GREEN + "   a b c d e f g h" + ANSI_RESET); // imprime rodapé do tabuleiro
 	}
 
 	private static void printPiece(ChessPiece piece, boolean background) {
