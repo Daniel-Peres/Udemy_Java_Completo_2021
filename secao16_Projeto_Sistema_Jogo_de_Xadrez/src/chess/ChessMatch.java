@@ -1,6 +1,5 @@
 package chess;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -95,7 +94,8 @@ public class ChessMatch {
 		// #SpecialMove promotion
 		promoted = null;
 		if (movedPiece instanceof Pawn) {
-			if ((movedPiece.getColor() == Color.WHITE && target.getRow() == 0) || (movedPiece.getColor() == Color.BLACK && target.getRow() == 7)) {
+			if ((movedPiece.getColor() == Color.WHITE && target.getRow() == 0)
+					|| (movedPiece.getColor() == Color.BLACK && target.getRow() == 7)) {
 				promoted = (ChessPiece) board.piece(target);
 				promoted = replacePromotedPiece("Q");
 			}
@@ -126,7 +126,7 @@ public class ChessMatch {
 		}
 
 		if (!type.equals("B") && !type.equals("C") && !type.equals("T") && !type.equals("Q")) {
-			throw new InvalidParameterException("Letra invalida para promocao");
+			return promoted;
 		}
 
 		Position pos = promoted.getChessPosition().toPosition();
@@ -143,7 +143,7 @@ public class ChessMatch {
 
 	private ChessPiece newPiece(String type, Color color) {
 		if (type.equals("B")) return new Bishop(board, color);
-		if (type.equals("C")) return new Knight(board, color);		
+		if (type.equals("C")) return new Knight(board, color);
 		if (type.equals("Q")) return new Queen(board, color);
 		return new Rook(board, color);
 	}
