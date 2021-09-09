@@ -36,50 +36,50 @@ public class Program {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 
-		List<Product> list = new ArrayList<>();
+		List<Product> list = new ArrayList<>(); //lista de produtos
 
-		System.out.println("Enter file path: ");
-		String sourceFileStr = sc.nextLine();
+		System.out.println("Enter file path: "); 
+		String sourceFileStr = sc.nextLine(); // armazenar caminho do arquivo que foi digitado
 
-		File sourceFile = new File(sourceFileStr);
-		String sourceFolderStr = sourceFile.getParent();
+		File sourceFile = new File(sourceFileStr); // pegando arquivo de origem
+		String sourceFolderStr = sourceFile.getParent(); // armazenando o caminho da pasta do arquivo
 
-		boolean success = new File(sourceFolderStr + "\\out").mkdir();
+		boolean success = new File(sourceFolderStr + "\\out").mkdir(); // criando diretorio out na pasta original do arquivo
 
-		String targetFileStr = sourceFolderStr + "\\out\\summary.csv";
+		String targetFileStr = sourceFolderStr + "\\out\\summary.csv"; // armazenando o caminho do arquivo de destino
 
-		try (BufferedReader br = new BufferedReader(new FileReader(sourceFileStr))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(sourceFileStr))) { // lendo o arquivo de origem
 
-			String itemCsv = br.readLine();
-			while (itemCsv != null) {
+			String itemCsv = br.readLine(); // pegando a primeira linha do arquivo de origem
+			while (itemCsv != null) { // enquando nao enquantrar linha vazia continua lendo a proxima linha
 
-				String[] fields = itemCsv.split(",");
-				String name = fields[0];
-				double price = Double.parseDouble(fields[1]);
-				int quantity = Integer.parseInt(fields[2]);
+				String[] fields = itemCsv.split(",");// cria vetor com os campos da linha, separando pela virgula
+				String name = fields[0]; // pega o primeiro campo e armazena em nome
+				double price = Double.parseDouble(fields[1]); // pega o segundo campo e armazena em preco
+				int quantity = Integer.parseInt(fields[2]); // pega o terceiro campo e armazena em quantidade
 
-				list.add(new Product(name, price, quantity));
+				list.add(new Product(name, price, quantity)); // adiciona novo produto na lista de produtos
 
-				itemCsv = br.readLine();
+				itemCsv = br.readLine(); // le a proxima linha
 			}
 
-			try (BufferedWriter bw = new BufferedWriter(new FileWriter(targetFileStr))) {
+			try (BufferedWriter bw = new BufferedWriter(new FileWriter(targetFileStr))) { // escrevendo o arquivo de destino
 
-				for (Product item : list) {
-					bw.write(item.getName() + "," + String.format("%.2f", item.total()));
-					bw.newLine();
+				for (Product item : list) { // passa por toda a lista de produtos
+					bw.write(item.getName() + "," + String.format("%.2f", item.total())); // escreve s linhs com o produto da lista
+					bw.newLine(); // pula para a proxima linha
 				}
 
-				System.out.println(targetFileStr + " CREATED!");
+				System.out.println(targetFileStr + " CREATED!"); // mensagem de arquivo criado
 
 			} catch (IOException e) {
-				System.out.println("Error writing file: " + e.getMessage());
+				System.out.println("Error writing file: " + e.getMessage()); // erro na escrita do arquivo
 			}
 
 		} catch (IOException e) {
-			System.out.println("Error reading file: " + e.getMessage());
+			System.out.println("Error reading file: " + e.getMessage()); // erro na leitura do arquivo
 		}
 
-		sc.close();
+		sc.close(); // fechar Scanner
 	}
 }
