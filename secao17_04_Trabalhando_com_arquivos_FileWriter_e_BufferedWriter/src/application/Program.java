@@ -10,7 +10,7 @@ public class Program {
 
 		String[] lines = new String[] { "Good morning", "Good afternoon", "Good night" };
 
-		String path = "C:\\eclipse_workspace\\Udemy_Java_Completo_2021\\secao17_01_Trabalhando_com_arquivos_File_e_Scanner\\out.txt";
+		String path = "C:\\workspaces\\eclipse_workspace\\Udemy_Java_Completo_2021\\secao17_01_Trabalhando_com_arquivos_File_e_Scanner\\out.txt";
 
 		// com essa linha do try reescreve o arquivo
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
