@@ -8,12 +8,12 @@ public class Program {
 
 	public static void main(String[] args) {
 
-		File file = new File("C:\\eclipse_workspace\\Udemy_Java_Completo_2021\\secao17_01_Trabalhando_com_arquivos_File_e_Scanner\\in.txt");
+		File file = new File("C:\\workspaces\\eclipse_workspace\\Udemy_Java_Completo_2021\\secao17_01_Trabalhando_com_arquivos_File_e_Scanner\\in.txt");
 		Scanner sc = null;
 
 		try {
 			sc = new Scanner(file);
-			while (sc.hasNextLine()) {
+			while (sc.hasNextLine()) {// testar se existe uma proxima linha no arquivo
 				System.out.println(sc.nextLine());
 			}
 		} catch (IOException e) {
